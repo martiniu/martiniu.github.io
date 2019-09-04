@@ -13,7 +13,6 @@ const readFromJSON = () => {
       everyVegobjekt.push({key, val})
     });
   });
-
 }
 
 const populateTable = () => {
@@ -24,17 +23,23 @@ const populateTable = () => {
 const filterByThreshold = inputValue => {
   filteredVegobjekter = []
   Object.entries(everyVegobjekt).forEach(([key,value]) => {
-    if(value["val"]['dekkebredde'] >= inputValue) {
+    if($("#ddmenu").val() == 1 && value["val"]['dekkebredde'] >= inputValue) {
+      filteredVegobjekter.push(value);
+    }
+    else if($("#ddmenu").val() == 2 && value["val"]['dekkebredde'] < inputValue) {
       filteredVegobjekter.push(value);
     }
   });
-  filteredVegobjekter.sort((a, b) => a["val"]["dekkebredde"] - b["val"]["dekkebredde"]);
+
+  filteredVegobjekter.sort((a, b) => {
+    return $("#ddmenu").val() == 1 ? a["val"]["dekkebredde"] - b["val"]["dekkebredde"] : b["val"]["dekkebredde"] - a["val"]["dekkebredde"]
+  })
 }
 
 // Builds the HTML Table out of myList.
 function buildHtmlTable(selector, myList) {
   $("#dataTable").empty();
-  var columns = addAllColumnHeaders(myList, selector);
+  var columns = addAllColumnHeaders(selector);
 
   for (var i = 0; i < myList.length; i++) {
     var row$ = $('<tr/>');
@@ -50,7 +55,6 @@ function buildHtmlTable(selector, myList) {
         row$.append($('<td/>').html(diff));
       }
       else if (colIndex == 2) {
-
         row$.append($('<td/>').html(generateLink(myList[i]["key"])));
       }
     }
@@ -58,18 +62,24 @@ function buildHtmlTable(selector, myList) {
   }
 }
 
-
 const generateLink = objektId => {
   link1 = "https://www.vegvesen.no/nvdb/vegkart/v2/#kartlag:nib/hva:(~(farge:'2_2,filter:(~(operator:'*3d,type_id:4566,verdi:(~5492)),"
   link2 = "(operator:'*3d,type_id:4570,verdi:(~5506)),(operator:'*3d,type_id:4568,verdi:(~18)),(operator:'*3c*3d,type_id:4569,verdi:(~49))),id:532),"
-  link3 = "(farge:'0_1,filter:(~(operator:'*3e*3d,type_id:5555,verdi:(~"+$("#dekkenum").val()+"))),id:583))/hvor:(fylke:(~3),"
+  link3 = ""
   link4 = "kommune:(~602,626,219,220))/@261273,6645269,8/vegobjekt:"+objektId+":40a744:583"
 
-  link = link1+link2+link3+link4
-  return '<a href='+link+' target="_blank">Link</a>'
+  if($("#ddmenu").val() == 1) {
+    link3 = "(farge:'0_1,filter:(~(operator:'*3e*3d,type_id:5555,verdi:(~"+$("#dekkenum").val()+"))),id:583))/hvor:(fylke:(~3),"
+  }
+  else if ($("#ddmenu").val() == 2) {
+    link3 = "(farge:'0_1,filter:(~(operator:'*3c,type_id:5555,verdi:(~"+$("#dekkenum").val()+"))),id:583))/hvor:(fylke:(~3),"
+  }
+  
+  finalLink = link1+link2+link3+link4
+  return '<a href='+finalLink+' target="_blank">Link</a>'
 }
 
-function addAllColumnHeaders(myList, selector) {
+function addAllColumnHeaders(selector) {
   var columnSet = [];
   var headerTr$ = $('<tr/>');
 
