@@ -17,7 +17,7 @@ const readFromJSON = () => {
 }
 
 const populateTable = () => {
-  filterByThreshold($("#inputValue").val())
+  filterByThreshold($("#dekkenum").val())
   buildHtmlTable("#dataTable", filteredVegobjekter);
 }
 
@@ -45,7 +45,7 @@ function buildHtmlTable(selector, myList) {
         row$.append($('<td/>').html(cellValue));
       }
       else if (colIndex == 1) {
-        var diff = myList[i]["val"]["dekkebredde"] - $("#inputValue").val()
+        var diff = myList[i]["val"]["dekkebredde"] - $("#dekkenum").val()
         diff = Math.round(diff * 100) / 100
         row$.append($('<td/>').html(diff));
       }
@@ -62,7 +62,7 @@ function buildHtmlTable(selector, myList) {
 const generateLink = objektId => {
   link1 = "https://www.vegvesen.no/nvdb/vegkart/v2/#kartlag:nib/hva:(~(farge:'2_2,filter:(~(operator:'*3d,type_id:4566,verdi:(~5492)),"
   link2 = "(operator:'*3d,type_id:4570,verdi:(~5506)),(operator:'*3d,type_id:4568,verdi:(~18)),(operator:'*3c*3d,type_id:4569,verdi:(~49))),id:532),"
-  link3 = "(farge:'0_1,filter:(~(operator:'*3e*3d,type_id:5555,verdi:(~"+$("#inputValue").val()+"))),id:583))/hvor:(fylke:(~3),"
+  link3 = "(farge:'0_1,filter:(~(operator:'*3e*3d,type_id:5555,verdi:(~"+$("#dekkenum").val()+"))),id:583))/hvor:(fylke:(~3),"
   link4 = "kommune:(~602,626,219,220))/@261273,6645269,8/vegobjekt:"+objektId+":40a744:583"
 
   link = link1+link2+link3+link4

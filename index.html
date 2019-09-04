@@ -14,7 +14,7 @@
 
     <title>Nasjonal Vegdatabase Søkefunksjon</title>
   </head>
-  <body>
+  <body onload="initialize()">
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <ul class="navbar-nav">
@@ -59,12 +59,12 @@
                 <button id="kartbutton" type="button" class="btn btn-secondary">Vegkart søk</button>
               </div>
               <div class="col-sm-2">
-                <button id="tekstbutton" type="button" class="btn btn-secondary">Vegtabell søk</button>
+                <button id="tekstbutton" onclick="populateTable()" type="button" class="btn btn-secondary">Vegtabell søk</button>
               </div>
             </div>
           </div>
 
-          <table class="table table-hover table-dark">
+          <table id="dataTable" class="table table-hover table-dark">
             <thead>
               <tr>
                 <th scope="col">#</th>
