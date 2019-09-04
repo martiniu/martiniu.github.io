@@ -1,37 +1,17 @@
-var myList2 = [
-  { "name": "abc", "age": 50 },
-  { "age": "25", "hobby": "swimming" },
-  { "name": "xyz", "hobby": "programming" }
-];
-
-var zzz = []
-
+var myList = []
 
 function readFromJSON(selector){
   $.getJSON("query_vegref_med_felt.json", function(json) {
     for(obj in json)
-    {
-      zzz.push(obj)
-    }
-    //console.log(typeof(json)); // this will show the info it in firebug console
-    //console.log(typeof(myList));
-    //myList.push(json);
-    //asd(myList2);
-    buildHtmlTable(selector, zzz);
-    
-  });
-  
-}
+    myList.push(json[obj])
 
-function asd(aaa){
-  console.log(aaa.length)
+    buildHtmlTable(selector, myList);
+  });
 }
 
 
 // Builds the HTML Table out of myList.
 function buildHtmlTable(selector, myList) {
-  //readFromJSON();
-  //console.log();
   var columns = addAllColumnHeaders(myList, selector);
 
   for (var i = 0; i < myList.length; i++) {
