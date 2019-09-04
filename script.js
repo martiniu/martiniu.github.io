@@ -2,8 +2,10 @@ var myList = []
 
 function readFromJSON(selector){
   $.getJSON("query_vegref_med_felt.json", function(json) {
-    for(obj in json)
-    myList.push(json[obj])
+    for(obj in json) {
+      myList.push(json[obj])
+    }
+    console.log("Test")
 
     buildHtmlTable(selector, myList);
   });
