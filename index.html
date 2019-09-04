@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+  <title>Nasjonal Vegdatabase</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+                        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+                        crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+  <script src="script.js"></script>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<script src="script.js"></script>
-
-<body onLoad="readFromJSON('#excelDataTable')">
-  <table id="excelDataTable" border="1">
-  </table>
+<body onload="initialize()">
+  <div>
+    <input id="inputValue">
+    <button onclick="populateTable()">Søk</button>
+    <table id="dataTable" class="table table-dark">
+    </table>
+  </div>
 </body>
 
 </html>
