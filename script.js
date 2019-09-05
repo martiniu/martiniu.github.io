@@ -1,6 +1,5 @@
 let everyVegobjekt = []
 let filteredVegobjekter = []
-//let filteredVegobjekterIndex = []
 
 
 const initialize = () => {
@@ -37,7 +36,7 @@ const filterByThreshold = inputValue => {
 }
 
 // Builds the HTML Table out of myList.
-function buildHtmlTable(selector, myList) {
+const buildHtmlTable = (selector, myList) => {
   $("#dataTable").empty();
   var columns = addAllColumnHeaders(selector);
 
@@ -68,13 +67,6 @@ const generateLink = objektId => {
   link3 = ""
   link4 = "kommune:(~602,626,219,220))/@261273,6645269,8/vegobjekt:"+objektId+":40a744:583"
 
-<<<<<<< HEAD
-  link = link1+link2+link3+link4
-  //return '<a href='+link+' target="_blank">Link</a>'
-  return '<button href = '+link+' type="button" class="btn btn-outline-dark">Søk her</button>'
-
-  // <button type="button" class="btn btn-outline-secondary">Secondary</button>
-=======
   if($("#ddmenu").val() == 1) {
     link3 = "(farge:'0_1,filter:(~(operator:'*3e*3d,type_id:5555,verdi:(~"+$("#dekkenum").val()+"))),id:583))/hvor:(fylke:(~3),"
   }
@@ -83,11 +75,10 @@ const generateLink = objektId => {
   }
   
   finalLink = link1+link2+link3+link4
-  return '<a href='+finalLink+' target="_blank">Link</a>'
->>>>>>> 20e54ec6803ec9253610e14116c2877de5203859
+  return '<button href = '+finalLink+' type="button" class="btn btn-outline-dark">Søk her</button>'
 }
 
-function addAllColumnHeaders(selector) {
+const addAllColumnHeaders = selector => {
   var columnSet = [];
   var headerTr$ = $('<tr/>');
 
@@ -100,6 +91,18 @@ function addAllColumnHeaders(selector) {
   $(selector).append(headerTr$);
 
   return columnSet;
+}
+
+const updateInfoTable = () => {
+
+  
+
+  // finn max
+
+  // finn min
+  // finn avg
+  // finn %>
+  // finn %<
 }
 
 
