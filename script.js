@@ -66,7 +66,10 @@ const generateLink = objektId => {
   link4 = "kommune:(~602,626,219,220))/@261273,6645269,8/vegobjekt:"+objektId+":40a744:583"
 
   link = link1+link2+link3+link4
-  return '<a href='+link+' target="_blank">Link</a>'
+  //return '<a href='+link+' target="_blank">Link</a>'
+  return '<button href = '+link+' type="button" class="btn btn-outline-dark">Søk her</button>'
+
+  // <button type="button" class="btn btn-outline-secondary">Secondary</button>
 }
 
 function addAllColumnHeaders(myList, selector) {
