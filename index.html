@@ -22,16 +22,16 @@
           <a class="nav-link" href="#home">Hjem</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#mapsearch">Vegkart søk</a>
+          <a class="nav-link" href="#mapsearch">Søk</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#tablesearch">Vegtabell søk</a>
+          <a class="nav-link" href="#tablesearch">Vegtabell</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#infoTable">Statistikk</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#info">Info</a>
+          <a class="nav-link" href="#info">Info om vegbredder</a>
         </li>
       </ul>
     </nav>
@@ -44,9 +44,8 @@
     <div id="mapsearch" class="container">
       <div class="col">
         <div class="col-sm-12">
-          <h3>Vegkart og vegtabell søk</h3>
-          <p>Vegkart søk lar deg lete etter dekkebredder som er større eller mindre enn oppgitt bredde. Etter at du søker med vegkart blir du lenket til en ny side der delene av veien som passer ditt søk blir grønne og resten er rødt.
-          Ved bruk av tabellsøk vil all info bli vist i en tabell under i tillegg til en liten infoboks med min, maks og gjennomsnittlig dekkebredde. Det vil også oppgi prosentvis hvor stor av strekningen som passer søket ditt. </p>
+          <h3>Vegkart og tabell</h3>
+          <p>Vegkart søk lar deg lete etter dekkebredder som er større eller mindre enn oppgitt dekkebredde. Etter at du søker med vegkart blir du lenket til en ny side der delene av veien som passer ditt søk blir grønne og resten blir rødt. Vis tabell viser all info som matcher ditt søk, og under tabellen vil det vises statistikk for søket. </p>
           <div>
             <p><br></p>
           </div>
@@ -68,29 +67,13 @@
                 <button id="kartbutton" onclick="window.open(vegkartRedirect())" type="button" class="btn btn-secondary">Vegkart søk</button>
               </div>
               <div class="col-sm-2">
-                <button id="tekstbutton" onclick="populateTable()" type="button" class="btn btn-secondary">Vegtabell søk</button>
+                <button id="tekstbutton" onclick="populateTable()" type="button" class="btn btn-secondary">Vis tabell</button>
               </div>
             </div>
           </div>
 
           <table id="dataTable" class="table">
-            <thead id="dataTableHead" class="thead-dark">
-              <tr>
-                <th scope="col">Dekkebredde</th>
-                <th scope="col">Differanse</th>
-                <th scope="col">Vegkart lenke</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Benytt søkefunksjonen</td>
-              </tr>
-            </tbody>
           </table>
-
-          <div>
-            <p><br></p>
-          </div>
 
           <table id="infoTable" class="table">
             <thead class="thead-dark">
