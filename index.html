@@ -44,7 +44,7 @@
     <div id="mapsearch" class="container">
       <div class="col">
         <div class="col-sm-12">
-          <h3>Vegkart søk</h3>
+          <h3>Vegkart og vegtabell søk</h3>
           <p>Vegkart søk lar deg lete etter dekkebredder som er større eller mindre enn oppgitt bredde. Etter at du søker med vegkart blir du lenket til en ny side der delene av veien som passer ditt søk blir grønne og resten er rødt.
           Ved bruk av tabellsøk vil all info bli vist i en tabell under i tillegg til en liten infoboks med min, maks og gjennomsnittlig dekkebredde. Det vil også oppgi prosentvis hvor stor av strekningen som passer søket ditt. </p>
           <div>
@@ -61,7 +61,6 @@
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <!-- <label for="usr">Dekkebredde i meter:</label> -->
                   <input id="dekkenum" type="number" min="0" max="100" placeholder="25" class="form-control" id="dekkebredde-input">
                 </div>
               </div>
@@ -79,7 +78,7 @@
               <tr>
                 <th scope="col">Dekkebredde</th>
                 <th scope="col">Differanse</th>
-                <th scope="col">Lenke</th>
+                <th scope="col">Vegkart lenke</th>
               </tr>
             </thead>
             <tbody>
@@ -103,19 +102,19 @@
             <tbody>
               <tr>
                 <td>Minste dekkebredde</td>
-                <td id="infoMinDekkebredde">7.3</td>
+                <td id="infoMinDekkebredde">0</td>
               </tr>
               <tr>
                 <td>Største dekkebredde</td>
-                <td id="infoMaxDekkebredde">42.6</td>
+                <td id="infoMaxDekkebredde">0</td>
               </tr>
               <tr>
                 <td>Gjennomsnittlig dekkebredde</td>
-                <td id="infoAvgDekkebredde">21.2</td>
+                <td id="infoAvgDekkebredde">0</td>
               </tr>
               <tr>
                 <td>Prosentvis passer søket</td>
-                <td id="infoPercentBigger">30</td>
+                <td id="infoPercentBigger">0</td>
               </tr>
             </tbody>
           </table>
