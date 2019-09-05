@@ -17,6 +17,7 @@ const readFromJSON = () => {
 const populateTable = () => {
   filterByThreshold($("#dekkenum").val())
   buildHtmlTable("#dataTable", filteredVegobjekter);
+  updateInfoTable();
 }
 
 const filterByThreshold = inputValue => {
@@ -75,7 +76,7 @@ const generateLink = objektId => {
   }
   
   finalLink = link1+link2+link3+link4
-  return '<button href = '+finalLink+' type="button" class="btn btn-outline-dark">Søk her</button>'
+  return '<button href='+finalLink+' class="btn btn-outline-dark">Søk her</button>'
 }
 
 const addAllColumnHeaders = selector => {
@@ -94,28 +95,38 @@ const addAllColumnHeaders = selector => {
 }
 
 const updateInfoTable = () => {
+  var temp = filteredVegobjekter.map(a => a["val"]["dekkebredde"]);
+  var minDekkebredde = Math.min(...temp);
+  var maxDekkebredde = Math.max(...temp);
+  var avgDekkebredde = Math.round(temp.reduce((a,b) => a+b,0)/filteredVegobjekter.length*10)/10;
+  var percentOver = 0;
 
+  if($("#ddmenu").val() == 1) {
+    percentOver = Math.round(filteredVegobjekter.length/everyVegobjekt.length*1000)/10
+  }
+  else if ($("#ddmenu").val() == 2) {
+    percentOver = Math.round(filteredVegobjekter.length/everyVegobjekt.length*1000)/10
+  }
   
-
-  // finn max
-
-  // finn min
-  // finn avg
-  // finn %>
-  // finn %<
+  $("#infoMinDekkebredde").html(minDekkebredde+'m');
+  $("#infoMaxDekkebredde").html(maxDekkebredde+'m');
+  $("#infoAvgDekkebredde").html(avgDekkebredde+'m');
+  $("#infoPercentBigger").html(percentOver+'%');
 }
 
+const vegkartRedirect = () => {
+  link1 = "https://www.vegvesen.no/nvdb/vegkart/v2/#kartlag:nib/hva:(~(farge:'2_2,filter:(~(operator:'*3d,type_id:4566,verdi:(~5492)),"
+  link2 = "(operator:'*3d,type_id:4570,verdi:(~5506)),(operator:'*3d,type_id:4568,verdi:(~18)),(operator:'*3c*3d,type_id:4569,verdi:(~49))),id:532),"
+  link3 = ""
+  link4 = "kommune:(~602,626,219,220))/@261273,6645269,8"
 
-/*
-def calculate_values(self):
-"""
-This method sorts a filtered list of tuples, populates the table with correct values
-and updates the information screen after each search.
-"""
+  if($("#ddmenu").val() == 1) {
+    link3 = "(farge:'0_1,filter:(~(operator:'*3e*3d,type_id:5555,verdi:(~"+$("#dekkenum").val()+"))),id:583))/hvor:(fylke:(~3),"
+  }
+  else if ($("#ddmenu").val() == 2) {
+    link3 = "(farge:'0_1,filter:(~(operator:'*3c,type_id:5555,verdi:(~"+$("#dekkenum").val()+"))),id:583))/hvor:(fylke:(~3),"
+  }
 
-
-def vegkart_button_click(self):
-    """
-    This method redirects a user to the vegkart with preconfigured inputs and search-values.
-    """
-*/
+  finalLink = link1+link2+link3+link4
+  return finalLink
+}
