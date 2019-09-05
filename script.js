@@ -1,6 +1,5 @@
 let everyVegobjekt = []
 let filteredVegobjekter = []
-//let filteredVegobjekterIndex = []
 
 
 const initialize = () => {
@@ -37,7 +36,7 @@ const filterByThreshold = inputValue => {
 }
 
 // Builds the HTML Table out of myList.
-function buildHtmlTable(selector, myList) {
+const buildHtmlTable = (selector, myList) => {
   $("#dataTable").empty();
   var columns = addAllColumnHeaders(selector);
 
@@ -79,7 +78,7 @@ const generateLink = objektId => {
   return '<button href = '+finalLink+' type="button" class="btn btn-outline-dark">Søk her</button>'
 }
 
-function addAllColumnHeaders(selector) {
+const addAllColumnHeaders = selector => {
   var columnSet = [];
   var headerTr$ = $('<tr/>');
 
@@ -92,6 +91,18 @@ function addAllColumnHeaders(selector) {
   $(selector).append(headerTr$);
 
   return columnSet;
+}
+
+const updateInfoTable = () => {
+
+  
+
+  // finn max
+
+  // finn min
+  // finn avg
+  // finn %>
+  // finn %<
 }
 
 
