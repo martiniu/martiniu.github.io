@@ -39,7 +39,11 @@
       <div class="col">
         <div class="col-sm-12">
           <h3>Vegkart søk</h3>
-          <p>Vegkart søk lar deg lete etter dekkebredder som er større eller mindre enn oppgitt bredde. Etter at du søker med vegkart blir du lenket til en ny side der delene av veien som passer ditt søk blir grønne og resten er rødt. Ved bruk av tabellsøk vil all info bli vist i en tabell under i tillegg til en liten infoboks med min, maks og gjennomsnittlig dekkebredde. Det vil også oppgi prosentvis hvor stor av strekningen som passer søket ditt. </p>
+          <p>Vegkart søk lar deg lete etter dekkebredder som er større eller mindre enn oppgitt bredde. Etter at du søker med vegkart blir du lenket til en ny side der delene av veien som passer ditt søk blir grønne og resten er rødt.
+          Ved bruk av tabellsøk vil all info bli vist i en tabell under i tillegg til en liten infoboks med min, maks og gjennomsnittlig dekkebredde. Det vil også oppgi prosentvis hvor stor av strekningen som passer søket ditt. </p>
+          <div>
+            <p><br></p>
+          </div>
           <div id="tablesearch" class="container">
             <div class="row">
               <div class="col-sm-4">
@@ -64,12 +68,12 @@
             </div>
           </div>
 
-          <div>
-            <p></p>
-          </div>
+          <!-- <div>
+            <p><br></p>
+          </div> -->
 
-          <table id="dataTable" class="table table-striped">
-            <thead>
+          <table id="dataTable" class="table">
+            <thead class="thead-dark">
               <tr>
                 <th scope="col">Dekkebredde</th>
                 <th scope="col">Differanse</th>
@@ -84,8 +88,47 @@
               </tr>
             </tbody>
           </table>
+
+          <div>
+            <p><br></p>
+          </div>
+
+          <table id="infoTable" class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Verdi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Minste dekkebredde</td>
+                <td>7.3</td>
+              </tr>
+              <tr>
+                <td>Største dekkebredde</td>
+                <td>42.6</td>
+              </tr>
+              <tr>
+                <td>Gjennomsnittlig dekkebredde</td>
+                <td>21.2</td>
+              </tr>
+              <tr>
+                <td>Prosentvis passer søket</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Prosentvis passer ikke søket</td>
+                <td>70</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
+
+    <div>
+      <p><br></p>
     </div>
 
     <div id="info" class="container">
