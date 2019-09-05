@@ -16,13 +16,19 @@
   </head>
   <body onload="initialize()">
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#home">Hjem</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#mapsearch">Vegkart søk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#tablesearch">Vegtabell søk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#infoTable">Statistikk</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#info">Info</a>
@@ -68,12 +74,8 @@
             </div>
           </div>
 
-          <!-- <div>
-            <p><br></p>
-          </div> -->
-
           <table id="dataTable" class="table">
-            <thead class="thead-dark">
+            <thead id="dataTableHead" class="thead-dark">
               <tr>
                 <th scope="col">Dekkebredde</th>
                 <th scope="col">Differanse</th>
@@ -82,9 +84,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>25</td>
-                <td>0.0</td>
-                <td>Søk her</td>
+                <td>Benytt søkefunksjonen</td>
               </tr>
             </tbody>
           </table>
@@ -116,10 +116,6 @@
               <tr>
                 <td>Prosentvis passer søket</td>
                 <td id="infoPercentBigger">30</td>
-              </tr>
-              <tr>
-                <td>Prosentvis passer ikke søket</td>
-                <td id="infoPercentSmaller">70</td>
               </tr>
             </tbody>
           </table>

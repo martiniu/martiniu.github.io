@@ -75,13 +75,15 @@ const generateLink = objektId => {
   }
 
   finalLink = link1+link2+link3+link4
-  return '<button href = '+finalLink+' type="button" class="btn btn-outline-dark">Søk her</button>'
+  //return '<button onclick=window.location.href="'+finalLink+'" target="_blank" type="button" class="btn btn-outline-dark">Søk her</button>'
+  return '<a href='+finalLink+' target="_blank" class="btn btn-outline-dark">Søk her</a>'
 }
 
 const addAllColumnHeaders = selector => {
   var columnSet = [];
   var headerTr$ = $('<tr/>');
 
+  headerTr$.addClass("thead-dark")  //makes the header dark 8)
   headerTr$.append($('<th/>').html("Dekkebredde"));
   columnSet.push("Dekkebredde");
   headerTr$.append($('<th/>').html("Differanse"));
@@ -95,7 +97,7 @@ const addAllColumnHeaders = selector => {
 
 const updateInfoTable = () => {
 
-  
+
 
   // finn max
 
