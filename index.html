@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Stylesheet, popper, bootstrap, jquery and javascript -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js"></script>
+
+    <title>Nasjonal Vegdatabase Søkefunksjon</title>
+  </head>
+  <body onload="initialize()">
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#home">Hjem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#mapsearch">Søk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#tablesearch">Vegtabell</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#infoTable">Statistikk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#info">Info om vegbredder</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="home" class="jumbotron text-center">
+      <h1>Nasjonal Vegdatabase Søkefunksjon</h1>
+      <p>For alle dekkebredder på E18 mellom Drammen og Oslo.</p>
+    </div>
+
+    <div id="mapsearch" class="container">
+      <div class="col">
+        <div class="col-sm-12">
+          <h3>Vegkart og tabell</h3>
+          <p>Vegkart søk lar deg lete etter dekkebredder som er større eller mindre enn oppgitt dekkebredde. Etter at du søker med vegkart blir du lenket til en ny side der delene av veien som passer ditt søk blir grønne og resten blir rødt. Vis tabell viser all info som matcher ditt søk, og under tabellen vil det vises statistikk for søket. </p>
+          <div>
+            <p><br></p>
+          </div>
+          <div id="tablesearch" class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <select id="ddmenu" class="browser-default custom-select">
+                  <option  value="0" selected>Velg søkemetode</option>
+                  <option id="biggerthan" value="1">Dekkebredde er større enn</option>
+                  <option id="smallerthan" value="2">Dekkebredde er mindre enn</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <input id="dekkenum" type="number" min="0" max="100" placeholder="25" class="form-control">
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <button id="kartbutton" onclick="window.open(vegkartRedirect())" type="button" class="btn btn-secondary">Vegkart søk</button>
+              </div>
+              <div class="col-sm-2">
+                <button id="tekstbutton" onclick="populateTable()" type="button" class="btn btn-secondary">Vis tabell</button>
+              </div>
+            </div>
+          </div>
+
+          <table id="dataTable" class="table">
+          </table>
+
+          <table id="infoTable" class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Verdi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Minste dekkebredde</td>
+                <td id="infoMinDekkebredde">0</td>
+              </tr>
+              <tr>
+                <td>Største dekkebredde</td>
+                <td id="infoMaxDekkebredde">0</td>
+              </tr>
+              <tr>
+                <td>Gjennomsnittlig dekkebredde</td>
+                <td id="infoAvgDekkebredde">0</td>
+              </tr>
+              <tr>
+                <td>Prosentvis passer søket</td>
+                <td id="infoPercentBigger">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p><br></p>
+    </div>
+
+    <div id="info" class="container">
+      <div class="col">
+        <div class="col-sm-12">
+          <h3>Info om vegbredder</h3>
+          <p>Vegbredde er bredde fra kantstein til kantstein eller ved skulderkant. <br>
+            Dekkebredde er vegdekkekant-vegdekkekant/kantstein, der trafikkdeler eller fysisk trafikkøy trekkes fra, malt trafikkøy tas med. <br>
+            Kjørebanebredde er sum av bredde på kjørefeltene.</p>
+          <img src="http://tfprod1.sintef.no:8080/datakatalog/prokatfigurer/583_eksps_vegbredde_kjorebane1.png" class="img-fluid" alt="Vegbredder-beskrivelser">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
